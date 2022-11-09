@@ -1,0 +1,13 @@
+.alphabet {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: 20px;
+    width: 960px;
+}
+
+.letter {
+    background-color: aquamarine;
+    text-align: center;
+    height: 50px;
+    cursor: pointer;
+}
