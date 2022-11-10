@@ -1,4 +1,24 @@
+body {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: repeat(2, 50vh);
+    grid-template-areas: 
+        "canvas word"
+        "alphabet alphabet";
+    justify-items: center;
+    align-items: center;
+}
+
+canvas {
+    grid-area: canvas;
+}
+
+.word {
+    grid-area: word;
+}
+
 .alphabet {
+    grid-area: alphabet;
     display: grid;
     grid-template-columns: repeat(9, 1fr);
     gap: 20px;
