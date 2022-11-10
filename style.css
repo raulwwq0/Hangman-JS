@@ -26,8 +26,10 @@ canvas {
 }
 
 .letter {
-    background-color: aquamarine;
+    border: 3px solid #000;
     text-align: center;
     height: 50px;
+    width: 50px;
+    line-height: 50px;
     cursor: pointer;
 }
