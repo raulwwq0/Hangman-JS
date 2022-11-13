@@ -1,4 +1,4 @@
-import { countries } from "../words.js";
+import { countries } from "../assets/js/words.js";
 
 class HangmanService {
     words = countries;
