@@ -1,9 +1,7 @@
-import HangmanService from './hangman.service.js';
-import HangmanView from './hangman.view.js';
+import HangmanService from './hangman/hangman.service.js';
+import HangmanView from './hangman/hangman.view.js';
+import HangmanController from './hangman/hangman.controller.js';
 
 const view = new HangmanView();
 const service = new HangmanService();
-
-view.configureCanvas();
-
-view.createAlphabet();
+const controller = new HangmanController(service, view);
