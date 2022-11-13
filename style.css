@@ -1,35 +1,139 @@
+:root {
+    --color-primary: #000;
+    --color-secondary: #fff;
+    --color-correct: lightgreen;
+    --color-incorrect: lightcoral;
+}
+
 body {
+    font-family: monospace;
     display: grid;
-    grid-template-columns: 1fr 2fr;
-    grid-template-rows: repeat(2, 50vh);
-    grid-template-areas: 
-        "canvas word"
-        "alphabet alphabet";
+    grid-template-rows: repeat(3, 30vh);
+    grid-template-areas:
+        "canvas"
+        "word"
+        "alphabet";
     justify-items: center;
     align-items: center;
+    padding-top: 5vh;
+}
+
+.app-name {
+    position: absolute;
+    top: 0;
+    left: 30px;
+}
+
+.app-name h1 {
+    font-size: 2rem;
+    color: var(--color-primary);
+}
+
+.app-name p {
+    text-decoration: underline;
 }
 
 canvas {
     grid-area: canvas;
+    width: 500px;
+    height: 250px;
 }
 
 .word {
     grid-area: word;
+    font-size: 5rem;
+}
+
+.word span {
+    margin: 0 5px;
+}
+
+.word span.space {
+    border-bottom: none;
+}
+
+.word span.letter {
+    border-bottom: 3px solid var(--color-primary);
 }
 
 .alphabet {
     grid-area: alphabet;
     display: grid;
-    grid-template-columns: repeat(9, 1fr);
+    grid-template-columns: repeat(13, 1fr);
     gap: 20px;
     width: 960px;
 }
 
-.letter {
-    border: 3px solid #000;
+.alphabet .letter {
+    border: 3px solid var(--color-primary);
+    font-size: 2rem;
     text-align: center;
     height: 50px;
     width: 50px;
     line-height: 50px;
     cursor: pointer;
+    border-radius: 9999px;
+}
+
+.alphabet .marked-letter {
+    cursor: default;
+    pointer-events: none;
+}
+
+.alphabet .correct-letter {
+    background-color: var(--color-correct);
+}
+
+.alphabet .wrong-letter {
+    background-color: var(--color-incorrect);
+}
+
+.message {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.message a {
+    color: var(--color-primary);
+    margin-top: 50px;
+    text-decoration: none;
+}
+
+.show-message {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+    width: 100vw;
+}
+
+.winner-message {
+    color: var(--color-correct);
+}
+
+.loser-message {
+    color: var(--color-incorrect);
+}
+
+.reset-button {
+    margin-top: 50px;
+    padding: 10px 20px;
+    border: 3px solid var(--color-primary);
+    cursor: pointer;
+    transition: 0.2s;
+    border-radius: 9999px;
+}
+
+.reset-button:hover {
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+}
+
+.hidden {
+    display: none;
 }
