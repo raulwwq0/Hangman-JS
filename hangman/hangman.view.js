@@ -152,19 +152,17 @@ class HangmanView {
         );
     };
 
-    unbindClickLetter = () => {
+    unbindClickLetter = () =>
         this.GUI.$alphabet.removeEventListener(
             "click",
             this.eventFunctionsHandler.click
         );
-    };
 
-    unbindKeyDown = () => {
+    unbindKeyDown = () =>
         document.removeEventListener(
             "keydown",
             this.eventFunctionsHandler.keydown
         );
-    };
 
     markCorrectLetter = (letter) => {
         const $letter = document.querySelector(`[data-letter="${letter}"]`);
@@ -192,9 +190,7 @@ class HangmanView {
         });
     };
 
-    hideAlphabet = () => {
-        this.GUI.$alphabet.classList.add("hidden");
-    };
+    hideAlphabet = () => this.GUI.$alphabet.classList.add("hidden");
 
     buildMessage = (message) => {
         this.GUI.$message.innerHTML += message;
