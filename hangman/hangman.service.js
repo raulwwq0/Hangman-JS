@@ -4,13 +4,16 @@ class HangmanService {
     words = countries;
     selectedWord;
     wordLetters;
+    wordLettersWithoutSpaces;
     guessedLetters = [];
     triedLetters = [];
     mistakes = 0;
+    guess = 0;
 
     constructor() {
         this.selectedWord = this.getRandomWord().toUpperCase();
         this.wordLetters = this.selectedWord.split("");
+        this.wordLettersWithoutSpaces = this.wordLetters.filter(letter => letter !== " ");
     }
 
     getRandomWord = () => {
@@ -31,8 +34,13 @@ class HangmanService {
     }
 
     isGameWon = () => {
-        return this.wordLetters.every((letter) => {
-            return this.guessedLetters.includes(letter);
+        this.guess = 0;
+        return this.wordLettersWithoutSpaces.every((letter) => {
+            if (this.guessedLetters.includes(letter)) {
+                this.guess++;
+                return true;
+            }
+            return false;
         });
     }
 
