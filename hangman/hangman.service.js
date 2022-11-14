@@ -1,7 +1,7 @@
-import { countries } from "../assets/js/words.js";
+import { wordLists } from "../assets/js/words.js";
 
 class HangmanService {
-    words = countries;
+    words = wordLists.pokemon;
     selectedWord;
     wordLetters;
     wordLettersWithoutSpaces;
