@@ -12,11 +12,11 @@ class HangmanController {
     }
 
     handlerChecks = (letter) => {
-        if (this.service.isAlreadyTried(letter)) {
+        if (this.service.isLetterAlreadyTried(letter)) {
             return;
         }
         this.service.triedLetters.push(letter);
-        this.service.checkLetter(letter) ? this.setLetterCorrect(letter) : this.setLetterWrong(letter);
+        this.service.isLetterOnWord(letter) ? this.setLetterCorrect(letter) : this.setLetterWrong(letter);
         this.gameStatus();
     }
 

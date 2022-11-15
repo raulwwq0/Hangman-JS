@@ -22,9 +22,9 @@ class HangmanService {
         return this.words[randomIndex];
     };
 
-    checkLetter = (letter) => this.selectedWord.includes(letter);
+    isLetterOnWord = (letter) => this.selectedWord.includes(letter);
 
-    isAlreadyTried = (letter) => this.triedLetters.includes(letter);
+    isLetterAlreadyTried = (letter) => this.triedLetters.includes(letter);
 
     isGameEnded = () => this.isGameWon() || this.isGameLost();
 

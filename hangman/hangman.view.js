@@ -3,9 +3,9 @@ class HangmanView {
     context;
 
     GUI = {
-        $alphabet: document.querySelector("#alphabet"),
-        $word: document.querySelector("#word"),
-        $message: document.querySelector("#message"),
+        alphabet: document.querySelector("#alphabet"),
+        word: document.querySelector("#word"),
+        message: document.querySelector("#message"),
     };
 
     alphabet = [
@@ -111,13 +111,13 @@ class HangmanView {
     ];
 
     createAlphabet = () => {
-        this.alphabet.forEach((letter) => {
+        for (const letter of this.alphabet) {
             const button = document.createElement("div");
             button.innerHTML = letter;
             button.classList.add("letter");
             button.dataset.letter = letter;
-            this.GUI.$alphabet.appendChild(button);
-        });
+            this.GUI.alphabet.appendChild(button);
+        }
     };
 
     clickEvent = (callback) => (event) => {
@@ -137,7 +137,7 @@ class HangmanView {
     bindClickLetter = (callback) => {
         const clickEventReference = this.clickEvent(callback);
         this.eventFunctionsHandler.click = clickEventReference;
-        this.GUI.$alphabet.addEventListener(
+        this.GUI.alphabet.addEventListener(
             "click",
             this.eventFunctionsHandler.click
         );
@@ -153,7 +153,7 @@ class HangmanView {
     };
 
     unbindClickLetter = () =>
-        this.GUI.$alphabet.removeEventListener(
+        this.GUI.alphabet.removeEventListener(
             "click",
             this.eventFunctionsHandler.click
         );
@@ -165,20 +165,20 @@ class HangmanView {
         );
 
     markCorrectLetter = (letter) => {
-        const $letter = document.querySelector(`[data-letter="${letter}"]`);
-        $letter.classList.add("marked-letter");
-        $letter.classList.add("correct-letter");
+        const letterToMark = document.querySelector(`[data-letter="${letter}"]`);
+        letterToMark.classList.add("marked-letter");
+        letterToMark.classList.add("correct-letter");
     };
 
     markWrongLetter = (letter) => {
-        const $letter = document.querySelector(`[data-letter="${letter}"]`);
-        $letter.classList.add("marked-letter");
-        $letter.classList.add("wrong-letter");
+        const letterToMark = document.querySelector(`[data-letter="${letter}"]`);
+        letterToMark.classList.add("marked-letter");
+        letterToMark.classList.add("wrong-letter");
     };
 
     printWord = (wordLetters, guessedLetters) => {
-        this.GUI.$word.innerHTML = "";
-        wordLetters.forEach((letter) => {
+        this.GUI.word.innerHTML = "";
+        for (const letter of wordLetters) {
             const span = document.createElement("span");
             letter === " "
                 ? span.classList.add("space")
@@ -186,28 +186,28 @@ class HangmanView {
             span.innerHTML = guessedLetters.includes(letter)
                 ? letter
                 : "&nbsp;";
-            this.GUI.$word.appendChild(span);
-        });
+            this.GUI.word.appendChild(span);
+        }
     };
 
-    hideAlphabet = () => this.GUI.$alphabet.classList.add("hidden");
+    hideAlphabet = () => this.GUI.alphabet.classList.add("hidden");
 
     buildMessage = (message) => {
-        this.GUI.$message.innerHTML += message;
-        this.GUI.$message.innerHTML +=
+        this.GUI.message.innerHTML += message;
+        this.GUI.message.innerHTML +=
             "<a href='.' class='reset-button'>Try Again</a>";
     };
 
     printWinnerMessage = () => {
         this.buildMessage("You win!");
-        this.GUI.$message.classList.add("show-message");
-        this.GUI.$message.classList.add("winner-message");
+        this.GUI.message.classList.add("show-message");
+        this.GUI.message.classList.add("winner-message");
     };
 
     printLoserMessage = (word) => {
         this.buildMessage(`You lose! The word was: ${word}`);
-        this.GUI.$message.classList.add("show-message");
-        this.GUI.$message.classList.add("loser-message");
+        this.GUI.message.classList.add("show-message");
+        this.GUI.message.classList.add("loser-message");
     };
 }
 
