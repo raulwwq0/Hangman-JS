@@ -11,7 +11,7 @@ class HangmanService {
 
     constructor() {
         this.selectedWord = this.getRandomWord().toUpperCase();
-        this.wordLetters = this.selectedWord.split("");
+        this.wordLetters = [...this.selectedWord];
         this.wordLettersWithoutSpaces = this.wordLetters.filter(
             (letter) => letter !== " "
         );
