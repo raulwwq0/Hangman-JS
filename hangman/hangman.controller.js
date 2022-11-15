@@ -15,13 +15,13 @@ class HangmanController {
         if (this.service.isLetterAlreadyTried(letter)) {
             return;
         }
-        this.service.triedLetters.push(letter);
+        this.service.triedLetters = [...this.service.triedLetters, letter];
         this.service.isLetterOnWord(letter) ? this.setLetterCorrect(letter) : this.setLetterWrong(letter);
         this.gameStatus();
     }
 
     setLetterCorrect = (letter) => {
-        this.service.guessedLetters.push(letter);
+        this.service.guessedLetters = [...this.service.guessedLetters, letter];
         this.view.markCorrectLetter(letter);
         this.view.printWord(this.service.wordLetters, this.service.guessedLetters);
     }
