@@ -137,10 +137,13 @@ class HangmanView {
     bindClickLetter = (callback) => {
         const clickEventReference = this.clickEvent(callback);
         this.eventFunctionsHandler.click = clickEventReference;
-        this.GUI.alphabet.addEventListener(
-            "click",
-            this.eventFunctionsHandler.click
-        );
+        const $alphabet = this.GUI.alphabet.childNodes;
+        for (const letter of $alphabet) {
+            letter.addEventListener(
+                "click",
+                this.eventFunctionsHandler.click
+            );
+        }
     };
 
     bindKeyDown = (callback) => {
@@ -152,11 +155,15 @@ class HangmanView {
         );
     };
 
-    unbindClickLetter = () =>
-        this.GUI.alphabet.removeEventListener(
-            "click",
-            this.eventFunctionsHandler.click
-        );
+    unbindClickLetter = () => {
+        const $alphabet = this.GUI.alphabet.childNodes;
+        for (const letter of $alphabet) {
+            letter.removeEventListener(
+                "click",
+                this.eventFunctionsHandler.click
+            );
+        }
+    }
 
     unbindKeyDown = () =>
         document.removeEventListener(
